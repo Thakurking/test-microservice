@@ -18,6 +18,10 @@ mongoose.connect(
 
 app.use(express.json());
 
+app.get("/auth/show", async(req, res) =>{
+    return res.send("hii");
+})
+
 app.post("/auth/login", async (req, res) => {
     const { email, password } = req.body;
     const user = await User.findOne({ email });
