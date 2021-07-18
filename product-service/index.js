@@ -28,6 +28,10 @@ async function connect() {
 }
 connect();
 
+app.get("/product/hello", async (req, res) => {
+  return res.send("hii")
+});
+
 app.post("/product/buy", async (req, res) => {
   const { ids } = req.body;
   const products = await Product.find({ _id: { $in: ids } });

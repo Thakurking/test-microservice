@@ -61,3 +61,17 @@ app.post("/auth/register", async (req, res) => {
 app.listen(PORT, () => {
     console.log(`Auth-Service at ${PORT}`);
 });
+
+// location /admin {
+
+//     root /var/www/html/adm;
+
+// #try_files $uri $uri/ /admin/index.html; # try_files will need to be relative to root
+
+// proxy_pass http://127.0.0.1:9000;
+// proxy_http_version 1.1;
+// proxy_set_header    Host             $host;
+// proxy_set_header    X-Real-IP        $remote_addr;
+// proxy_set_header    X-Forwarded-For  $proxy_add_x_forwarded_for;
+// proxy_read_timeout 1800;
+// proxy_c
