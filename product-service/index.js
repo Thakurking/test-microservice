@@ -29,7 +29,7 @@ mongoose.connect(
 // connect();
 
 app.get("/product/hello", async (req, res) => {
-  return res.send("hii");
+  return res.send("hii aws");
 });
 
 // app.post("/product/buy", async (req, res) => {
