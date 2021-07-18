@@ -19,7 +19,9 @@ mongoose.connect(
   }
 );
 app.use(express.json());
-
+app.get("/order/product", async (req, res) => {
+  return res.send("hii from order");
+});
 // function createOrder(products, userEmail) {
 //     let total = 0;
 //     for (let t = 0; t < products.length; ++t) {
