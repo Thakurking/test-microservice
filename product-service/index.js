@@ -6,7 +6,7 @@ const Product = require("./Product");
 const amqp = require("amqplib");
 var order;
 
-var channel, connection;
+// var channel, connection;
 
 app.use(express.json());
 mongoose.connect(
@@ -20,46 +20,46 @@ mongoose.connect(
   }
 );
 
-async function connect() {
-  const amqpServer = "amqp://localhost:5672";
-  connection = await amqp.connect(amqpServer);
-  channel = await connection.createChannel();
-  await channel.assertQueue("PRODUCT");
-}
-connect();
+// async function connect() {
+//   const amqpServer = "amqp://localhost:5672";
+//   connection = await amqp.connect(amqpServer);
+//   channel = await connection.createChannel();
+//   await channel.assertQueue("PRODUCT");
+// }
+// connect();
 
 app.get("/product/hello", async (req, res) => {
-  return res.send("hii")
+  return res.send("hii");
 });
 
-app.post("/product/buy", async (req, res) => {
-  const { ids } = req.body;
-  const products = await Product.find({ _id: { $in: ids } });
-  channel.sendToQueue(
-    "ORDER",
-    Buffer.from(
-      JSON.stringify({
-        products,
-        userEmail: req.user.email,
-      })
-    )
-  );
-  channel.consume("PRODUCT", (data) => {
-    order = JSON.parse(data.content);
-  });
-  return res.json(order);
-});
+// app.post("/product/buy", async (req, res) => {
+//   const { ids } = req.body;
+//   const products = await Product.find({ _id: { $in: ids } });
+//   channel.sendToQueue(
+//     "ORDER",
+//     Buffer.from(
+//       JSON.stringify({
+//         products,
+//         userEmail: req.user.email,
+//       })
+//     )
+//   );
+//   channel.consume("PRODUCT", (data) => {
+//     order = JSON.parse(data.content);
+//   });
+//   return res.json(order);
+// });
 
-app.post("/product/create", async (req, res) => {
-  const { name, description, price } = req.body;
-  const newProduct = new Product({
-    name,
-    description,
-    price,
-  });
-  newProduct.save();
-  return res.json(newProduct);
-});
+// app.post("/product/create", async (req, res) => {
+//   const { name, description, price } = req.body;
+//   const newProduct = new Product({
+//     name,
+//     description,
+//     price,
+//   });
+//   newProduct.save();
+//   return res.json(newProduct);
+// });
 
 app.listen(PORT, () => {
   console.log(`Product-Service at ${PORT}`);
