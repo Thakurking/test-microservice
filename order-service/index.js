@@ -19,6 +19,7 @@ mongoose.connect(
   }
 );
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 console.log("hii aws");
 app.get("/order/product/:firstName/:lastName", async (req, res) => {
   const { firstName } = req.params.firstName;
