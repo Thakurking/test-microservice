@@ -23,8 +23,8 @@ app.use(express.urlencoded({ extended: true }));
 console.log("hii aws");
 app.get("/order/product/:firstName/:lastName", async (req, res) => {
   console.log(req.params);
-  const { firstName } = req.params.firstName;
-  const { lastName } = req.params.lastName;
+  const firstName = req.params.firstName;
+  const lastName = req.params.lastName;
   console.log(firstName, lastName);
   return res.send(firstName).send(lastName);
   // return res.send("hii from order");
