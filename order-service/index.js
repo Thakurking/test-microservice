@@ -20,10 +20,10 @@ mongoose.connect(
 );
 app.use(express.json());
 console.log("hii aws");
-app.get("/order/product/:name", async (req, res) => {
-  const { name } = req.params;
-  console.log(name);
-  return res.send(name);
+app.get("/order/product/:firstName/:lastName", async (req, res) => {
+  const { firstName, lastName } = req.params;
+  console.log(firstName, lastName);
+  return res.send(firstName, lastName);
   return res.send("hii from order");
 });
 // function createOrder(products, userEmail) {
