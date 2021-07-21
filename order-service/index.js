@@ -19,6 +19,7 @@ mongoose.connect(
   }
 );
 app.use(express.json());
+console.log("hii aws")
 app.get("/order/product", async (req, res) => {
   return res.send("hii from order");
 });
