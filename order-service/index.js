@@ -26,7 +26,7 @@ app.get("/order/product/:firstName/:lastName", async (req, res) => {
   const firstName = req.params.firstName;
   const lastName = req.params.lastName;
   console.log(firstName, lastName);
-  return res.status(200).json(firstName, lastName);
+  return res.json(lastName);
   // return res.send("hii from order");
 });
 // function createOrder(products, userEmail) {
