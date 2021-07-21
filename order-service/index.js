@@ -19,8 +19,11 @@ mongoose.connect(
   }
 );
 app.use(express.json());
-console.log("hii aws")
-app.get("/order/product", async (req, res) => {
+console.log("hii aws");
+app.get("/order/product/:name", async (req, res) => {
+  const { name } = req.params.name;
+  console.log(name);
+  return res.send(name);
   return res.send("hii from order");
 });
 // function createOrder(products, userEmail) {
