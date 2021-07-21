@@ -21,7 +21,8 @@ mongoose.connect(
 app.use(express.json());
 console.log("hii aws");
 app.get("/order/product/:firstName/:lastName", async (req, res) => {
-  const { firstName, lastName } = req.params;
+  const { firstName } = req.params.firstName;
+  const { lastName } = req.params.lastName;
   console.log(firstName, lastName);
   return res.send(firstName, lastName);
   // return res.send("hii from order");
