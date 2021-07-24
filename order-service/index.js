@@ -4,8 +4,7 @@ const PORT = process.env.PORT_ONE || 9090;
 const mongoose = require("mongoose");
 const Order = require("./Order");
 const amqp = require("amqplib");
-// const isAuthenticated = require("../auth/isAuthenticated");
-
+const auth = require("../auth-service/auth");
 // var channel, connection;
 
 mongoose.connect(
@@ -21,7 +20,7 @@ mongoose.connect(
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 console.log("hii aws");
-app.get("/order/product/:firstName/:lastName", async (req, res) => {
+app.get("/order/product/:firstName/:lastName", auth, async (req, res) => {
   console.log(req.params);
   const firstName = req.params.firstName;
   const lastName = req.params.lastName;
